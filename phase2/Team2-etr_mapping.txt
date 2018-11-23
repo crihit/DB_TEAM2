@@ -1,0 +1,18 @@
+*** ER 스키마 변경사항 ***
+
+COUPON entity 를 삭제하였습니다.
+CART 가 weak entity가 되었습니다.
+CUSTOMER에서 기본 키였던 cusnum을 삭제하고 cusid를 기본 키로 설정하였습니다.
+
+*** 관계형 스키마 설명 ***
+
+category는 catid(category id)를 기본키로 가지며, 외부키를 가지지 않는다.
+provider는 Pid(Provider id)를 기본키로 가지며, 외부키를 가지지 않는다.
+item은 ItemID를 기본키로 가지며, category에 속해 있으므로 catid를 외부키로 가지며, provider에 의해 제공되므로 Pid를 외부키로 갖는다.
+customer는 Cusid(customer id)를 기본키로 가지며, 외부키를 가지지 않는다.
+cart는 CartID를 기본키로 가지며, customer가 있어야만 생성되는 weak entity이기에 Cusid를 외부키로 갖는다.
+putin은 item을 cart에 넣는 관계이기 때문에 ItemID와 CartID를 외부키로 가지며, 기본키로 사용한다.
+orders는 customer가 cart에 있는 상품들을 주문하는 관계이며, cart가 customer가 있어야만 하는 weak entity이기에 cart의 CartID를 외부키로 가지며, 기본키로 사용한다.
+orders는 cart의 제품을 주문했을때 어떤 retailer에게 주문을 했는지를 알기 위하여 RID를 외부키로 가진다.
+retailer는 RID(Retailer ID)를 기본키로 가지며, 외부키를 가지지 않는다.
+stores는 item을 retailer에 저장하는 관계이기 때문에, ItemID와, RID를 외부키로 가지며, 기본키로 사용한다.
