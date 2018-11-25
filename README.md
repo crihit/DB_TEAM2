@@ -8,4 +8,14 @@ Project started with Hyeon hak Kim and Jin Youn.
 
 Upload README and Phase2 files.
 
+### 2018.11.24
+
+Implementate Login page.
+
+### 2018.11.25
+
+Test registration.
+
+Add DB connection Java source.
+
 -----------------
