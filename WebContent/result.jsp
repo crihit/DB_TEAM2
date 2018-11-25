@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
-<%@ page language = "java" import="java.text.*,java.sql.*" %>
+<%@ page language = "java" import="java.text.*,java.sql.*,phase3.DB.ConnectDB" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,15 +10,9 @@
 <body>
 	<h2>Result of All Customer Query</h2>
 <%
-	String DBname = "hak";
-	String url = "jdbc:mysql://localhost/"+DBname;
-	String user = "knu";
-	String pass = "comp322";
-	Connection conn;
+	Connection conn = ConnectDB.getConnection();
 	PreparedStatement pstmt;
 	ResultSet rs;
-	Class.forName("com.mysql.jdbc.Driver");
-	conn = DriverManager.getConnection(url,user,pass);
 	String query1 = "SELECT Cusname, Pnumber, Job FROM customer";
 %>
     <h4>------ Q1 Result ------</h4>

@@ -7,19 +7,19 @@
 <title>Team2 Market</title>
 </head>
 <body>
-<% if (request.getParameter("error") == null ) { %>
-	<h1>Please Login..</h1>
-<% } else { %>
-	<h1><%= request.getParameter("error") %></h1>
-<% } %>
-
 <form action = "authentication.jsp" method="post">
 	<label>ID: </label>
 	<input name = "id" type = "text"><br>
 	<label>PW: </label>
 	<input name = "pw" type = "password"><br>
 	
+	<input type = "button" value = "register" onclick="location.href='register.jsp'">
 	<input type = "submit" value = "login">
 </form>
+<% if (request.getParameter("error") == null ) { %>
+	<h4>Please Login..</h4>
+<% } else { %>
+	<font color = "red"><%= request.getParameter("error") %></font>
+<% } %>
 </body>
 </html>
