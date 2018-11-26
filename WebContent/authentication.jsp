@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ page language = "java" import="java.text.*,java.sql.*,phase3.DB.ConnectDB" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Team2 Market</title>
 </head>
 <body>
@@ -30,7 +30,7 @@
 	}
 	else
 	{
-		out.println("<script>alert('ID ¶Ç´Â ºñ¹Ğ¹øÈ£°¡ Æ²·È½À´Ï´Ù.');history.back();</script>");
+		out.println("<script>alert('ID ë˜ëŠ” ë¹„ë°€ë²ˆí˜¸ê°€ í‹€ë ¸ìŠµë‹ˆë‹¤.');history.back();</script>");
 	}
 	
 	response.sendRedirect(redirectURL);

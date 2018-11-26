@@ -8,14 +8,14 @@
 <title>Team2 Market</title>
 </head>
 <body>
-	<h2>Result of All Customer Query</h2>
+	<h>상품</h2>
 <%
 	Connection conn = ConnectDB.getConnection();
 	PreparedStatement pstmt;
 	ResultSet rs;
-	String query1 = "SELECT Cusname, Pnumber, Job FROM customer";
+	String query1 = "SELECT Iname as Name, Iprice as Price FROM item";
 %>
-    <h4>------ Q1 Result ------</h4>
+    <h4>상품목록</h4>
 <%  
 	pstmt = conn.prepareStatement(query1);
 	rs = pstmt.executeQuery();
@@ -29,7 +29,6 @@
 		out.println("<tr>");
 		out.println("<td>"+rs.getString(1)+"</td>");
 		out.println("<td>"+rs.getString(2)+"</td>");
-		out.println("<td>"+rs.getString(3)+"</td>");
 		out.println("</tr>");
 	}
 	out.println("</table>");
