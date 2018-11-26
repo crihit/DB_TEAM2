@@ -4,7 +4,7 @@ import java.sql.*;
 
 public class ConnectDB {
 	public static Connection getConnection() throws SQLException, ClassNotFoundException{
-		String DB_NAME = "hak";
+		String DB_NAME = "team2";
 		String ID = "knu";
 		String PASSWORD = "comp322";
 	
