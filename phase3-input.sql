@@ -64,6 +64,11 @@ create table stores (
 	Icount int not null,
 	primary key (ItemID, RID));
 
+create table nowcart (
+	CartID int not null,
+	Cusid varchar(20) not null,
+	primary key (Cusid));
+
 INSERT INTO customer VALUES ('4cha','1234','M','01088714519','kim hyeon hak',21,'student',12345,'Ulsan','Bukgu','Yaksu 9-gil',20,'ga-dong 703');
 INSERT INTO customer VALUES ('4ka','9293a','M','01029392747','kim min jae',43,'teacher',12345,'Ulsan','Namgu','sinjung 8-gil',1,NULL);
 INSERT INTO customer VALUES ('4ta','8871','F','01038489324','lee sung hwan',18,'student',12345,'Ulsan','Bukgu','dongdae 1-gil',8,NULL);
@@ -1433,6 +1438,65 @@ INSERT INTO putin VALUES (168,43,1);
 INSERT INTO putin VALUES (169,44,2);
 INSERT INTO putin VALUES (170,45,1);
 
+INSERT INTO nowcart VALUES (151, '1ga');
+INSERT INTO nowcart VALUES (152, '1na');
+INSERT INTO nowcart VALUES (153, '1da');
+INSERT INTO nowcart VALUES (154, '1ra');
+INSERT INTO nowcart VALUES (155, '1ma');
+INSERT INTO nowcart VALUES (156, '1ba');
+INSERT INTO nowcart VALUES (157, '1sa');
+INSERT INTO nowcart VALUES (158, '1a');
+INSERT INTO nowcart VALUES (159, '1za');
+INSERT INTO nowcart VALUES (160, '1cha');
+INSERT INTO nowcart VALUES (161, '1ka');
+INSERT INTO nowcart VALUES (162, '1ta');
+INSERT INTO nowcart VALUES (163, '1pa');
+INSERT INTO nowcart VALUES (164, '1ha');
+
+INSERT INTO nowcart VALUES (165, '2ga');
+INSERT INTO nowcart VALUES (166, '2na');
+INSERT INTO nowcart VALUES (167, '2da');
+INSERT INTO nowcart VALUES (168, '2ra');
+INSERT INTO nowcart VALUES (169, '2ma');
+INSERT INTO nowcart VALUES (170, '2ba');
+INSERT INTO nowcart VALUES (171, '2sa');
+INSERT INTO nowcart VALUES (172, '2a');
+INSERT INTO nowcart VALUES (173, '2za');
+INSERT INTO nowcart VALUES (174, '2cha');
+INSERT INTO nowcart VALUES (175, '2ka');
+INSERT INTO nowcart VALUES (176, '2ta');
+INSERT INTO nowcart VALUES (177, '2pa');
+INSERT INTO nowcart VALUES (178, '2ha');
+
+INSERT INTO nowcart VALUES (179, '3ga');
+INSERT INTO nowcart VALUES (180, '3na');
+INSERT INTO nowcart VALUES (181, '3da');
+INSERT INTO nowcart VALUES (182, '3ra');
+INSERT INTO nowcart VALUES (183, '3ma');
+INSERT INTO nowcart VALUES (184, '3ba');
+INSERT INTO nowcart VALUES (185, '3sa');
+INSERT INTO nowcart VALUES (186, '3a');
+INSERT INTO nowcart VALUES (187, '3za');
+INSERT INTO nowcart VALUES (188, '3cha');
+INSERT INTO nowcart VALUES (189, '3ka');
+INSERT INTO nowcart VALUES (190, '3ta');
+INSERT INTO nowcart VALUES (191, '3pa');
+INSERT INTO nowcart VALUES (192, '3ha');
+
+INSERT INTO nowcart VALUES (193, '4ga');
+INSERT INTO nowcart VALUES (194, '4na');
+INSERT INTO nowcart VALUES (195, '4da');
+INSERT INTO nowcart VALUES (196, '4ra');
+INSERT INTO nowcart VALUES (197, '4ma');
+INSERT INTO nowcart VALUES (198, '4ba');
+INSERT INTO nowcart VALUES (199, '4sa');
+INSERT INTO nowcart VALUES (200, '4a');
+INSERT INTO nowcart VALUES (201, '4za');
+INSERT INTO nowcart VALUES (202, '4cha');
+INSERT INTO nowcart VALUES (203, '4ka');
+INSERT INTO nowcart VALUES (204, '4ta');
+INSERT INTO nowcart VALUES (205, '4pa');
+
 INSERT INTO orders VALUES (1,1,'2018-10-22');
 INSERT INTO orders VALUES (2,2,'2018-10-22');
 INSERT INTO orders VALUES (3,3,'2018-10-22');
@@ -1607,4 +1671,6 @@ ALTER TABLE orders ADD FOREIGN KEY (RID) REFERENCES retailer(RID);
 ALTER TABLE putin ADD FOREIGN KEY (ItemID) REFERENCES item(ItemID);
 ALTER TABLE stores ADD FOREIGN KEY (ItemID) REFERENCES item(ItemID);
 ALTER TABLE stores ADD FOREIGN KEY (RID) REFERENCES retailer(RID);
+ALTER TABLE nowcart ADD FOREIGN KEY (Cusid) REFERENCES customer(Cusid);
+ALTER TABLE nowcart ADD FOREIGN KEY (CartID) REFERENCES cart(CartID);
 
