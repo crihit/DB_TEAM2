@@ -18,4 +18,14 @@ Test registration.
 
 Add DB connection Java source.
 
+### 2018.11.26
+
+Test registration.
+
+Rename Database.
+
+Test showing item.
+
+Add nowcart table to DB and input data.
+
 -----------------

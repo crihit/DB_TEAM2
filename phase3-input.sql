@@ -69,6 +69,7 @@ create table nowcart (
 	Cusid varchar(20) not null,
 	primary key (Cusid));
 
+INSERT INTO customer VALUES ('admin','admin',NULL,'00000000000','administrator',NULL,NULL,12345,'Ulsan','Bukgu','Yaksu 9-gil',20,'ga-dong 703');
 INSERT INTO customer VALUES ('4cha','1234','M','01088714519','kim hyeon hak',21,'student',12345,'Ulsan','Bukgu','Yaksu 9-gil',20,'ga-dong 703');
 INSERT INTO customer VALUES ('4ka','9293a','M','01029392747','kim min jae',43,'teacher',12345,'Ulsan','Namgu','sinjung 8-gil',1,NULL);
 INSERT INTO customer VALUES ('4ta','8871','F','01038489324','lee sung hwan',18,'student',12345,'Ulsan','Bukgu','dongdae 1-gil',8,NULL);
