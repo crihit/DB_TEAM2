@@ -8,7 +8,7 @@
 <title>Team2 Market</title>
 </head>
 <body>
-	<h>»óÇ°</h2>
+	<h>ìƒí’ˆ</h2>
 <%
 	Connection conn = ConnectDB.getConnection();
 	PreparedStatement pstmt;
@@ -16,7 +16,7 @@
 	String cat = "1__";
 	String query1 = "SELECT Iname as Name, Iprice as Price FROM item WHERE Icategory LIKE \'" + cat + "\'";
 %>
-    <h4>»óÇ°¸ñ·Ï</h4>
+    <h4>ìƒí’ˆëª©ë¡</h4>
 <%  
 	pstmt = conn.prepareStatement(query1);
 	rs = pstmt.executeQuery();

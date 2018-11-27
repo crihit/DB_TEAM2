@@ -30,7 +30,7 @@
 	}
 	else
 	{
-		out.println("<script>alert('ID ??? ??й???? ???????.');history.back();</script>");
+		out.println("<script>alert('ID 또는 비밀번호가 틀렸습니다.');history.back();</script>");
 	}
 	
 	response.sendRedirect(redirectURL);
