@@ -1,8 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
-<title>Team2 Market</title>
+	<meta charset="EUC-KR">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <style>
+	  th {
+	    vertical-align: middle;
+	  }
+	  td {
+	    vertical-align: middle;
+	  }
+    </style>
+	<title>Team2 Market</title>
 </head>
 <body>
 	<h2>Hello World</h2>
@@ -10,5 +20,62 @@
 		<h3>Now on test. You can print all customer</h3>
 		<input type = "submit" value = "Submit" />
 	</form>
+	<br>
+	
+	<div align="center">
+		<h2 onclick="location.href='main.html'">COMP322004 TEAM2 Market</h2>
+		<form action = "login.jsp" method = "POST">
+			<button type="button" class="btn btn-primary" onclick="location.href='login.jsp'">Login</button>
+			<button type="button" class="btn btn-outline-success" onclick="location.href='register.jsp'">Register</button>
+		</form>
+	</div>
+	
+	<br><br>
+	<div align="center">
+		<table class="table table-bordered">
+		  <thead>
+		    <tr>
+		      <th colspan="2">카테고리 </th>
+		    </tr>
+		    <tr>
+		    	<th>대분류</th>
+		    	<th>소분류</th>
+		    </tr>
+		  </thead>
+		  <tbody align="center">
+		    <tr>
+		      <th rowspan="3">과일/견과</th>
+		      <td>사과/배</td>
+		    </tr>
+		    <tr>
+		    	<td>감귤/한라봉</td>
+		    </tr>
+		    <tr>
+		    	<td>감/곶감</td>
+		    </tr>
+		    <tr>
+		      <th rowspan="3">음료/커피</th>
+		      <td>생수</td>
+		    </tr>
+		    <tr>
+		    	<td>과일/야채음료</td>
+		    </tr>
+		    <tr>
+		    	<td>커피/티</td>
+		    </tr>
+		    <tr>
+		      <th rowspan="3">정육/계란</th>
+		      <td>돼지고기</td>
+		    </tr>
+		    <tr>
+		    	<td>소고기</td>
+		    </tr>
+		    <tr>
+		    	<td>닭고기</td>
+		    </tr>
+		  </tbody>
+		</table>
+	</div>
+	
 </body>
 </html>

@@ -1,21 +1,22 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
 <%@ page language = "java" import="java.text.*,java.sql.*,phase3.DB.ConnectDB" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta charset="EUC-KR">
 <title>Team2 Market</title>
 </head>
 <body>
-	<h>ìƒí’ˆ</h2>
+	<h>»óÇ°</h2>
 <%
 	Connection conn = ConnectDB.getConnection();
 	PreparedStatement pstmt;
 	ResultSet rs;
-	String query1 = "SELECT Iname as Name, Iprice as Price FROM item";
+	String cat = "1__";
+	String query1 = "SELECT Iname as Name, Iprice as Price FROM item WHERE Icategory LIKE \'" + cat + "\'";
 %>
-    <h4>ìƒí’ˆëª©ë¡</h4>
+    <h4>»óÇ°¸ñ·Ï</h4>
 <%  
 	pstmt = conn.prepareStatement(query1);
 	rs = pstmt.executeQuery();
