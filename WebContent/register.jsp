@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+<%@ page language = "java" import="phase3.DB.ConnectDB" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -42,8 +43,11 @@
 </form>
 <% if (request.getParameter("error") == null ) { %>
 	<h4></h4>
-<% } else { %>
+<% } else if (request.getParameter("error") == "null"){ %>
 	<font color = "red">필수입력란을 모두 채워주세요.</font>
-<% } %>
+<% } else if (request.getParameter("error") == "already"){ %>
+	<font color = "red">ID가 이미 존재합니다. 다른 아이디를 입력해 주세요.</font>
+<% }
+%>
 </body>
 </html>

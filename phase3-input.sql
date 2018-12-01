@@ -23,7 +23,7 @@ create table customer (
 	Cusid varchar(20) not null,
 	Cuspw varchar(20) not null,
 	Sex char,
-	Pnumber varchar(15) not null unique key,
+	Pnumber varchar(15) not null,
 	Cusname varchar(30) not null,
 	Age int,
 	Job varchar(20),

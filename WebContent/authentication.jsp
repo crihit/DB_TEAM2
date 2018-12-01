@@ -18,6 +18,7 @@
 	String redirectURL = "login.jsp?error=login-failed..";
 
 	stmt = conn.createStatement();
+	//rs = stmt.executeQuery(loginQuery);
 	rs = stmt.executeQuery(loginQuery);
 	rs.last();
 	
@@ -30,7 +31,9 @@
 	}
 	else
 	{
-		out.println("<script>alert('ID 또는 비밀번호가 틀렸습니다.');history.back();</script>");
+		%><script type = "text/javascript">
+		alert('ID 또는 비밀번호가 틀렸습니다.');
+		history.back();</script><%
 	}
 	
 	response.sendRedirect(redirectURL);

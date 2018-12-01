@@ -10,7 +10,7 @@ Upload README and Phase2 files.
 
 ### 2018.11.24
 
-Implementate Login page.
+Implement Login page.
 
 ### 2018.11.25
 
@@ -27,5 +27,11 @@ Rename Database.
 Test showing item.
 
 Add nowcart table to DB and input data.
+
+### 2018.12.1
+
+Implement Registration.
+
+Change column type of Pnumber in customer to not unique key.
 
 -----------------
