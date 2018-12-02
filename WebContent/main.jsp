@@ -6,30 +6,20 @@
 	<meta charset="EUC-KR">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <style>
-	  th {
-	    vertical-align: middle;
-	  }
-	  td {
-	    vertical-align: middle;
-	  }
-    </style>
-    <script type="text/javascript">
-	    function firstChange() {// 대분류 변한 경우
-	    	 var x = document.form1.first.options.selectedIndex;//선택한 인덱스
-	    	 var groups=document.form1.first.options.length;//대분류 갯수
-	    	 var group=new Array(groups);//배열 생성
-	    	 for (i=0; i<groups; i++) {
-	    	  group[i]=new Array();
-	    	 }
-
-
-		</script >
 	<title>Team2 Market</title>
 </head>
 <body>
 	<h1 onclick="location.href='main.jsp'">TEAM2 MARKET</h1><br/>
 	
+	<form class="form-inline my-2 my-lg-0" action = "search.jsp" method="POST">
+		<select class="custom-select mr-sm-2" name = "SearchOn">
+			<option value="1" selected>상품이름</option>
+			<option value="2">생산자</option>
+			<option value="3">생산지</option>
+		</select>
+		<input class="form-control mr-sm-2" type="search" placeholder="검색" name = "input">
+		<button class="btn btn-outline-success my-2 my-sm-0" type="submit">검색</button>
+    </form>
 	<form action = "showitems.jsp" method = "POST">
 		<div align="center">
 			<table class="table table-bordered">
