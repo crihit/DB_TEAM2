@@ -4,35 +4,49 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
-<title>Team2 Market</title>
+	<meta charset="EUC-KR">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<title>Team2 Market</title>
 </head>
 <body>
-	<h2>ITEM</h2>
+	<h1 onclick="location.href='main.jsp'">TEAM2 MARKET</h1>
 <%
 	Connection conn = ConnectDB.getConnection();
 	PreparedStatement pstmt;
+//	PreparedStatement pstmt2;
 	ResultSet rs;
+//	ResultSet rs2;
 	String catIdx = request.getParameter("catIdx");
-	String query1 = "SELECT Iname as Name, Iprice as Price FROM item WHERE Icategory LIKE \'" + catIdx + "\'";
+	String query1 = "SELECT ItemID, Iname, Iprice FROM item WHERE Icategory LIKE \'" + catIdx + "\'";
+//	String query2 = "SELECT major, sub FROM category WHERE catid = \'" + catIdx + "\'";
 %>
-    <h4>ITEM LIST</h4>
+    <br/> <h4>ITEM LIST</h4>
 <%  
+/* 	pstmt2 = conn.prepareStatement(query2);
+	rs2 = pstmt2.executeQuery();
+	rs2.next();
+	out.println("<h2>" + rs2.getString(1) +" > "+ rs2.getString(2) + "</h2>");
+ */
 	pstmt = conn.prepareStatement(query1);
 	rs = pstmt.executeQuery();
-	out.println("<table border=\"1\">");
-	ResultSetMetaData rsmd = rs.getMetaData();
-	int cnt = rsmd.getColumnCount();
-	for(int i=1;i<=cnt;i++){
+	out.println("<div align=\"center\">");
+	out.println("<table class=table table-hover align=\"center\" border=\"1\">");
+/*	ResultSetMetaData rsmd = rs.getMetaData();
+ 	int cnt = rsmd.getColumnCount();
+ 	for(int i=1;i<=cnt;i++){
 		out.println("<th>"+rsmd.getColumnName(i)+"</th>");
-	}
+	} */
+	out.println("<th>Name</th>");
+	out.println("<th>Price</th>");
 	while(rs.next()){
-		out.println("<tr>");
-		out.println("<td>"+rs.getString(1)+"</td>");
+		out.println("<tr align=\"center\" onclick=\"location.href=\'showitemdetail.jsp?ItemID=" + rs.getString(1) +"\'\">");
 		out.println("<td>"+rs.getString(2)+"</td>");
+		out.println("<td>"+rs.getString(3)+"</td>");
 		out.println("</tr>");
 	}
 	out.println("</table>");
+	out.println("</div>");
 	pstmt.close();
 	conn.close();
 %>
