@@ -27,7 +27,7 @@
 	if(cnt == 1)
 	{
 		String Cusname = rs.getString(1);
-		redirectURL = "main.html?id="+Cusname;
+		redirectURL = "main.jsp?id="+Cusname;
 	}
 	else
 	{

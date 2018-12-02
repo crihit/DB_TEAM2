@@ -29,21 +29,61 @@
 </head>
 <body>
 	<h1 onclick="location.href='main.jsp'">TEAM2 MARKET</h1><br/>
-	<form action = "result.jsp" method = "POST">
+	
+	<form action = "showitems.jsp" method = "POST">
+		<div align="center">
+			<table class="table table-bordered">
+			  <thead>
+			    <tr>
+			      <th colspan="3" onclick="location.href='showitems.jsp?catIdx=___'">카테고리</th>
+			    </tr>
+			    <tr>
+			    	<th onclick="location.href='showitems.jsp?catIdx=1__'">과일/견과</th>
+			    	<th onclick="location.href='showitems.jsp?catIdx=2__'">음료/커피</th>
+			    	<th onclick="location.href='showitems.jsp?catIdx=3__'">정육/계란</th>
+			    </tr>
+			  </thead>
+			  <tbody align="center">
+			    <tr>
+					<td onclick="location.href='showitems.jsp?catIdx=101'">사과/배</td>
+					<td onclick="location.href='showitems.jsp?catIdx=201'">생수</td>
+					<td onclick="location.href='showitems.jsp?catIdx=301'">돼지고기</td>
+			    </tr>
+			    <tr>
+			    	<td onclick="location.href='showitems.jsp?catIdx=102'">감귤/한라봉</td>
+			    	<td onclick="location.href='showitems.jsp?catIdx=202'">과일/야채음료</td>
+			    	<td onclick="location.href='showitems.jsp?catIdx=302'">소고기</td>
+			    </tr>
+			    <tr>
+			    	<td onclick="location.href='showitems.jsp?catIdx=103'">감/곶감</td>
+			    	<td onclick="location.href='showitems.jsp?catIdx=203'">커피/티</td>
+			    	<td onclick="location.href='showitems.jsp?catIdx=303'">닭고기</td>
+			    </tr>
+			  </tbody>
+			</table>
+		</div>
+	</form>
+	
+</body>
+</html>
+
+	<!-- for test -->
+	
+	<!-- <form action = "result.jsp" method = "POST">
 		<h3>Now on test. You can print all customer</h3>
 		<input type = "submit" value = "Submit" />
-	</form>
-	<br>
+	</form> -->
 	
-	<div align="center">
-		<h2 onclick="location.href='main.html'">COMP322004 TEAM2 Market</h2>
+	<!-- login from main page -->
+	
+	<!-- <div align="center">
 		<form action = "login.jsp" method = "POST">
 			<button type="button" class="btn btn-primary" onclick="location.href='login.jsp'">Login</button>
 			<button type="button" class="btn btn-outline-success" onclick="location.href='register.jsp'">Register</button>
 		</form>
-	</div>
+	</div> -->
 	
-	<br><br>
+	<!-- First cat table -->
 	
 	<!-- <form action = "showitems.jsp" method = "POST">
 	
@@ -111,39 +151,4 @@
 		</div>
 	</form> -->
 	
-	<form action = "showitems.jsp" method = "POST">
-		<div align="center">
-			<table class="table table-bordered">
-			  <thead>
-			    <tr>
-			      <th colspan="3" onclick="location.href='showitems.jsp?catIdx=___'">카테고리</th>
-			    </tr>
-			    <tr>
-			    	<th onclick="location.href='showitems.jsp?catIdx=1__'">과일/견과</th>
-			    	<th onclick="location.href='showitems.jsp?catIdx=2__'">음료/커피</th>
-			    	<th onclick="location.href='showitems.jsp?catIdx=3__'">정육/계란</th>
-			    </tr>
-			  </thead>
-			  <tbody align="center">
-			    <tr>
-					<td onclick="location.href='showitems.jsp?catIdx=101'">사과/배</td>
-					<td onclick="location.href='showitems.jsp?catIdx=201'">생수</td>
-					<td onclick="location.href='showitems.jsp?catIdx=301'">돼지고기</td>
-			    </tr>
-			    <tr>
-			    	<td onclick="location.href='showitems.jsp?catIdx=102'">감귤/한라봉</td>
-			    	<td onclick="location.href='showitems.jsp?catIdx=202'">과일/야채음료</td>
-			    	<td onclick="location.href='showitems.jsp?catIdx=302'">소고기</td>
-			    </tr>
-			    <tr>
-			    	<td onclick="location.href='showitems.jsp?catIdx=103'">감/곶감</td>
-			    	<td onclick="location.href='showitems.jsp?catIdx=203'">커피/티</td>
-			    	<td onclick="location.href='showitems.jsp?catIdx=303'">닭고기</td>
-			    </tr>
-			  </tbody>
-			</table>
-		</div>
-	</form>
 	
-</body>
-</html>
