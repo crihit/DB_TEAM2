@@ -8,15 +8,15 @@
 <title>Team2 Market</title>
 </head>
 <body>
-	<h2>상품</h2>
+	<h2>ITEM</h2>
 <%
 	Connection conn = ConnectDB.getConnection();
 	PreparedStatement pstmt;
 	ResultSet rs;
-	String cat = "1__";
-	String query1 = "SELECT Iname as Name, Iprice as Price FROM item WHERE Icategory LIKE \'" + cat + "\'";
+	String catIdx = request.getParameter("catIdx");
+	String query1 = "SELECT Iname as Name, Iprice as Price FROM item WHERE Icategory LIKE \'" + catIdx + "\'";
 %>
-    <h4>상품목록</h4>
+    <h4>ITEM LIST</h4>
 <%  
 	pstmt = conn.prepareStatement(query1);
 	rs = pstmt.executeQuery();
@@ -36,5 +36,6 @@
 	pstmt.close();
 	conn.close();
 %>
+
 </body>
 </html>
