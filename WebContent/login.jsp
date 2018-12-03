@@ -9,6 +9,13 @@
 <title>Team2 Market</title>
 </head>
 <body>
+<%  //String Cusid = request.getParameter("Cusid");
+		String Cusid = "temp";
+		Cusid = (String)session.getAttribute("Cusid");
+		System.out.println(Cusid);
+		if(Cusid != null)
+			response.sendRedirect("main.jsp");
+%>
 	<h1 onclick="location.href='login.jsp'">TEAM2 MARKET</h1><br/>
 	<h2>·Î±×ÀÎ</h2>
 	<br>
@@ -34,9 +41,14 @@
 		<input type = "submit" value = "login"> -->
 	</form>
 <% if (request.getParameter("error") == null ) { %>
-	<h4>Please Login..</h4>
+<div class="alert alert-dark" role="alert">
+  Please Login..
+</div>
 <% } else { %>
-	<font color = "red"><%= request.getParameter("error") %></font>
+<%-- <font color = "red"><%= request.getParameter("error") %></font> --%>
+ <div class="alert alert-danger" role="alert">
+ Login Failed.. Check your ID or Password.
+ </div>
 <% } %>
 </body>
 </html>

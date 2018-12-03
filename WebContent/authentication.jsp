@@ -15,7 +15,7 @@
 	String id = request.getParameter("id");
 	String pw = request.getParameter("pw");
 	String loginQuery = "SELECT Cusname, Cusid, Cuspw FROM customer WHERE Cusid = \""+id+"\" AND Cuspw = \""+pw+"\"";
-	String redirectURL = "login.jsp?error=login-failed..";
+	String redirectURL = "login.jsp?error=login-failed";
 
 	stmt = conn.createStatement();
 	//rs = stmt.executeQuery(loginQuery);
@@ -30,12 +30,6 @@
 //		redirectURL = "main.jsp?Cusid="+Cusid;
 		session.setAttribute("Cusid", Cusid); 
 		redirectURL = "main.jsp";
-	}
-	else
-	{
-		%><script type = "text/javascript">
-		alert('ID 또는 비밀번호가 틀렸습니다.');
-		history.back();</script><%
 	}
 	
 	response.sendRedirect(redirectURL);

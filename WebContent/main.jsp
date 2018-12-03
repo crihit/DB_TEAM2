@@ -10,8 +10,8 @@
 	<title>Team2 Market</title>
 </head>
 <body>
-	<h1 onclick="location.href='main.jsp'">TEAM2 MARKET</h1><br/>
-	
+	<h1 onclick="location.href='main.jsp'">TEAM2 MARKET</h1>
+	<button type="button" class="btn btn-danger" onclick="location.href='logout.jsp'">Logout</button>
 	<%  //String Cusid = request.getParameter("Cusid");
 		String Cusid = "temp";
 		Cusid = (String)session.getAttribute("Cusid");
@@ -21,11 +21,14 @@
 		else if(Cusid.equals("admin"))
 		{
 	%>	
-	
+	<button type="button" onclick="location.href='salesInfo.jsp'" class="btn btn-secondary">관리자메뉴</button>
 	<%	
 		}
 		else
 		{
+			%>	
+			<button type="button" onclick="location.href='userInfo.jsp'" class="btn btn-secondary">회원정보</button>
+			<%	
 			Connection conn = ConnectDB.getConnection();
 			PreparedStatement pstmt;
 			ResultSet rs;

@@ -72,7 +72,7 @@
 	stmt.executeUpdate(makeCart);
 	String nowCart = "INSERT INTO nowcart VALUES ("+cartNum+",\""+userName+"\")";
 	stmt.executeUpdate(nowCart);
-	redirectURL = "main.html?id="+request.getParameter("name");
+	redirectURL = "login.jsp";
 	response.sendRedirect(redirectURL);
 
 %>
