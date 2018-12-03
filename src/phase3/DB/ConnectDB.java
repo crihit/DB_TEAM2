@@ -53,4 +53,18 @@ public class ConnectDB {
 			return true;
 		}
 	}
+	
+	public static int checkCartNum() throws SQLException, ClassNotFoundException {
+		String query = "SELECT CartID FROM cart ORDER BY CartID DESC";
+		Connection conn = getConnection();
+		Statement stmt;
+		stmt = conn.createStatement();
+		ResultSet rs = stmt.executeQuery(query);
+		
+		int res = -1;
+		if(rs.next()) {
+			res = rs.getInt("CartID");
+		}
+		return res + 1;
+	}
 }

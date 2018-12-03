@@ -62,6 +62,16 @@
 	}
 
 	rs = pstmt.executeUpdate();
+	conn.close();
+	conn = ConnectDB.getConnection();
+	Statement stmt;
+	stmt = conn.createStatement();
+	String userName = request.getParameter("id");
+	int cartNum = ConnectDB.checkCartNum();
+	String makeCart = "INSERT INTO cart VALUES ("+cartNum+",\""+userName+"\")";
+	stmt.executeUpdate(makeCart);
+	String nowCart = "INSERT INTO nowcart VALUES ("+cartNum+",\""+userName+"\")";
+	stmt.executeUpdate(nowCart);
 	redirectURL = "main.html?id="+request.getParameter("name");
 	response.sendRedirect(redirectURL);
 
