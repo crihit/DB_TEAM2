@@ -10,7 +10,8 @@
 	<title>Team2 Market</title>
 </head>
 <body>
-	<h1 onclick="location.href='main.jsp'">TEAM2 MARKET</h1>
+	<h1 onclick="location.href='main.jsp'" align="center">TEAM2 MARKET</h1><br/>
+	<div align="right">
 	<button type="button" class="btn btn-danger" onclick="location.href='logout.jsp'">Logout</button>
 	<%  //String Cusid = request.getParameter("Cusid");
 		String Cusid = "temp";
@@ -21,14 +22,16 @@
 		else if(Cusid.equals("admin"))
 		{
 	%>	
-	<button type="button" onclick="location.href='salesInfo.jsp'" class="btn btn-secondary">관리자메뉴</button>
+		<button type="button" onclick="location.href='salesInfo.jsp'" class="btn btn-secondary">관리자메뉴</button>
+		</div>
 	<%	
 		}
 		else
 		{
 			%>	
-			<button type="button" onclick="location.href='userInfo.jsp'" class="btn btn-secondary">회원정보</button>
-			<%	
+				<button type="button" onclick="location.href='userInfo.jsp'" class="btn btn-secondary">회원정보</button>
+				</div>
+			<%
 			Connection conn = ConnectDB.getConnection();
 			PreparedStatement pstmt;
 			ResultSet rs;
@@ -59,32 +62,22 @@
 			pstmt = conn.prepareStatement(query1);
 			rs = pstmt.executeQuery();
 			out.println("<div align=\"center\">");
-			out.println("<table class=table table-hover align=\"center\" border=\"1\">");
-			out.println("<th align=\"center\">Name</th>");
-			out.println("<th align=\"center\">Price</th>");
+			out.println("<table class=\"table table-hover table-bordered\" align=\"center\" border=\"1\">");
+			out.println("<thead><th align=\"center\">Name</th>");
+			out.println("<th align=\"center\">Price</th></thead><tbody>");
 			while(rs.next()){
 				out.println("<tr align=\"center\" onclick=\"location.href=\'showitemdetail.jsp?ItemID=" + rs.getString(1) +"\'\">");
 				out.println("<td>"+rs.getString(2)+"</td>");
 				out.println("<td>"+rs.getString(3)+"</td>");
 				out.println("</tr>");
 			}
-			out.println("</table>");
+			out.println("</tbody></table>");
 			out.println("</div>");
 			pstmt.close();
 			conn.close();
 		}
 	%>
-	<div align="center">
-		<form class="form-inline my-2 my-lg-0" action = "search.jsp" method="POST">
-			<select class="custom-select mr-sm-2" name = "SearchOn">
-				<option value="1" selected>상품이름</option>
-				<option value="2">생산자</option>
-				<option value="3">생산지</option>
-			</select>
-			<input class="form-control mr-sm-2" type="search" placeholder="검색" name = "input">
-			<button class="btn btn-outline-success my-2 my-sm-0" type="submit">검색</button>
-	    </form>
-    </div>
+	
 	<form action = "showitems.jsp" method = "POST">
 		<div>
 			<table class="table table-bordered">
@@ -118,7 +111,17 @@
 			</table>
 		</div>
 	</form>
-	
+	<div>
+		<form class="form-inline my-2 my-lg-0 justify-content-end" action = "search.jsp" method="POST">
+			<select class="custom-select mr-sm-2" name = "SearchOn">
+				<option value="1" selected>상품이름</option>
+				<option value="2">생산자</option>
+				<option value="3">생산지</option>
+			</select>
+			<input class="form-control mr-sm-2" type="search" placeholder="검색" name = "input">
+			<button class="btn btn-outline-success my-2 my-sm-0" type="submit">검색</button>
+	    </form>
+    </div>
 </body>
 </html>
 

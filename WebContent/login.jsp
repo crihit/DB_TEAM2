@@ -16,7 +16,7 @@
 		if(Cusid != null)
 			response.sendRedirect("main.jsp");
 %>
-	<h1 onclick="location.href='login.jsp'">TEAM2 MARKET</h1><br/>
+	<h1 onclick="location.href='login.jsp'" align="center">TEAM2 MARKET</h1><br/>
 	<h2>·Î±×ÀÎ</h2>
 	<br>
 	<form action = "authentication.jsp" method="post">
