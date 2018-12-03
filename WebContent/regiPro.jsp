@@ -66,9 +66,9 @@
 		}
 	
 		rs = pstmt.executeUpdate();
-		conn.close();
+/* 		conn.close();
 		conn = ConnectDB.getConnection();
-
+		conn.setAutoCommit(false); */
 		stmt = conn.createStatement();
 		String userName = request.getParameter("id");
 		int cartNum = ConnectDB.checkCartNum();
