@@ -39,6 +39,9 @@
 	out.println("</table>");
 	out.println("</div>");
 	pstmt.close(); 
+%>
+<%
+
 	conn.close();
 %>
 
