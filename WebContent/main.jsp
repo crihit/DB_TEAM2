@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+<%@ page language = "java" import="java.text.*,java.sql.*,phase3.DB.ConnectDB" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,19 +12,80 @@
 <body>
 	<h1 onclick="location.href='main.jsp'">TEAM2 MARKET</h1><br/>
 	
-	<form class="form-inline my-2 my-lg-0" action = "search.jsp" method="POST">
-		<select class="custom-select mr-sm-2" name = "SearchOn">
-			<option value="1" selected>상품이름</option>
-			<option value="2">생산자</option>
-			<option value="3">생산지</option>
-		</select>
-		<input class="form-control mr-sm-2" type="search" placeholder="검색" name = "input">
-		<button class="btn btn-outline-success my-2 my-sm-0" type="submit">검색</button>
-    </form>
+	<%  //String Cusid = request.getParameter("Cusid");
+		String Cusid = "temp";
+		Cusid = (String)session.getAttribute("Cusid");
+		System.out.println(Cusid);
+		if(Cusid == null || Cusid.equals(""))
+			response.sendRedirect("login.jsp");
+		else if(Cusid.equals("admin"))
+		{
+	%>	
+	
+	<%	
+		}
+		else
+		{
+			Connection conn = ConnectDB.getConnection();
+			PreparedStatement pstmt;
+			ResultSet rs;
+			String query1 = "SELECT Cusname, Astate FROM customer WHERE Cusid = \'" + Cusid + "\'";
+			pstmt = conn.prepareStatement(query1);
+			rs = pstmt.executeQuery();
+			String cusname = "";
+			String state = "";
+			
+			if(rs.next())
+			{
+			cusname = rs.getString(1);
+			state = rs.getString(2);
+
+			out.println("<h3>Welcome " + cusname + "</h3><br/>");
+			out.println("<h5>같은지역의 고객님들이 많이 주문하신 상품입니다.</h5>");
+			}
+			query1 = "SELECT I.ItemID, I.Iname, I.Iprice\n" +
+					"FROM customer C, cart T, orders O, item I, putin P\n" +
+					"WHERE C.Cusid = T.Cusid\n" +
+					"AND T.CartID = O.CartID\n" +
+					"AND T.CartID = P.CartID\n" +
+					"AND P.ItemID = I.ItemID\n" +
+					"AND C.Astate = \'" + state + "\'\n" +
+					"GROUP BY I.ItemID\n" +
+					"ORDER BY COUNT(I.ItemID) DESC\n" +
+					"LIMIT 3\n";
+			pstmt = conn.prepareStatement(query1);
+			rs = pstmt.executeQuery();
+			out.println("<div align=\"center\">");
+			out.println("<table class=table table-hover align=\"center\" border=\"1\">");
+			out.println("<th align=\"center\">Name</th>");
+			out.println("<th align=\"center\">Price</th>");
+			while(rs.next()){
+				out.println("<tr align=\"center\" onclick=\"location.href=\'showitemdetail.jsp?ItemID=" + rs.getString(1) +"\'\">");
+				out.println("<td>"+rs.getString(2)+"</td>");
+				out.println("<td>"+rs.getString(3)+"</td>");
+				out.println("</tr>");
+			}
+			out.println("</table>");
+			out.println("</div>");
+			pstmt.close();
+			conn.close();
+		}
+	%>
+	<div align="center">
+		<form class="form-inline my-2 my-lg-0" action = "search.jsp" method="POST">
+			<select class="custom-select mr-sm-2" name = "SearchOn">
+				<option value="1" selected>상품이름</option>
+				<option value="2">생산자</option>
+				<option value="3">생산지</option>
+			</select>
+			<input class="form-control mr-sm-2" type="search" placeholder="검색" name = "input">
+			<button class="btn btn-outline-success my-2 my-sm-0" type="submit">검색</button>
+	    </form>
+    </div>
 	<form action = "showitems.jsp" method = "POST">
-		<div align="center">
+		<div>
 			<table class="table table-bordered">
-			  <thead>
+			  <thead align="center">
 			    <tr>
 			      <th colspan="3" onclick="location.href='showitems.jsp?catIdx=___'">카테고리</th>
 			    </tr>

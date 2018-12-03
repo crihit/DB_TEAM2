@@ -14,12 +14,9 @@
 <%
 	Connection conn = ConnectDB.getConnection();
 	PreparedStatement pstmt;
-//	PreparedStatement pstmt2;
 	ResultSet rs;
-//	ResultSet rs2;
 	String catIdx = request.getParameter("catIdx");
 	String query1 = "SELECT ItemID, Iname, Iprice FROM item WHERE Icategory LIKE \'" + catIdx + "\'";
-//	String query2 = "SELECT major, sub FROM category WHERE catid = \'" + catIdx + "\'";
 %>
     <br/> <h4>ITEM LIST</h4>
 <%  
@@ -37,8 +34,8 @@
  	for(int i=1;i<=cnt;i++){
 		out.println("<th>"+rsmd.getColumnName(i)+"</th>");
 	} */
-	out.println("<th>Name</th>");
-	out.println("<th>Price</th>");
+	out.println("<th align=\"center\">Name</th>");
+	out.println("<th align=\"center\">Price</th>");
 	while(rs.next()){
 		out.println("<tr align=\"center\" onclick=\"location.href=\'showitemdetail.jsp?ItemID=" + rs.getString(1) +"\'\">");
 		out.println("<td>"+rs.getString(2)+"</td>");

@@ -26,10 +26,10 @@
 	rs.next();
 	out.println("<div align=\"center\">");
 	out.println("<table class=table table-hover align=\"center\" border=\"1\">");
-	out.println("<th>Name</th>");
-	out.println("<th>Price</th>");
-	out.println("<th>Provider</th>");
-	out.println("<th>Location</th>");
+	out.println("<th align=\"center\">Name</th>");
+	out.println("<th align=\"center\">Price</th>");
+	out.println("<th align=\"center\">Provider</th>");
+	out.println("<th align=\"center\">Location</th>");
 	out.println("<tr align=\"center\">");
 	out.println("<td>"+rs.getString(1)+"</td>");
 	out.println("<td>"+rs.getString(2)+"</td>");

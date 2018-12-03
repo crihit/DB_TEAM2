@@ -26,8 +26,10 @@
 	rs.first();
 	if(cnt == 1)
 	{
-		String Cusname = rs.getString(1);
-		redirectURL = "main.jsp?id="+Cusname;
+		String Cusid = rs.getString(2);
+//		redirectURL = "main.jsp?Cusid="+Cusid;
+		session.setAttribute("Cusid", Cusid); 
+		redirectURL = "main.jsp";
 	}
 	else
 	{

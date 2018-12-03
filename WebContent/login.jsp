@@ -22,8 +22,10 @@
 		  <label for="exampleInputPassword1">비밀번호</label>
 		  <input name = "pw" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
 		</div>
-		<button type="submit" class="btn btn-primary">로그인</button>
-		
+		<div align="right">
+			<button type="button" class="btn btn-outline-success" onclick="location.href='register.jsp'">회원가입</button>
+			<button type="submit" class="btn btn-primary">로그인</button>
+		</div>
 		<!-- <label>아이디 : </label>
 		<input name = "id" type = "text"><br>
 		<label>패스워드 : </label>
