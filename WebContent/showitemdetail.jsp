@@ -45,10 +45,16 @@
 		<form class="form-inline my-2 my-lg-0 justify-content-end" action = "addcart.jsp" method="POST">
 			<span class="btn btn-secondary mr-sm-2">수량 : </span>
 			<input class="form-control mr-sm-2" type="number" min = "1" value = "1" placeholder="개수" name = "Inum">
-			<%out.println("<button class=\"btn btn-outline-success my-2 my-sm-0\" type=\"submit\" name = \"ItemID\" value = \"" + ItemID + "\" class=\"btn btn-success\">장바구니에 담기</button>"); 
+			<%out.println("<button class=\"btn btn-outline-success my-2 my-sm-0\" type=\"submit\" name = \"ItemID\" value = \"" + ItemID + "\">장바구니에 담기</button>"); 
 			System.out.println(ItemID);%>
 			<!-- <button type="submit"  class="btn btn-success">장바구니에 담기</button> -->
 		</form>
 	</div>
+	<% if (request.getParameter("error") == null ) {} else{ %>
+	<div class="alert alert-danger" role="alert">
+<%  if (request.getParameter("error").equals("already")){ %>
+	<h4>이미 장바구니에 추가되어 있습니다.</h4>
+<% }} %>
+</div>
 </body>
 </html>

@@ -16,9 +16,9 @@
 	PreparedStatement pstmt = null;
 	PreparedStatement pstmt2 = null;
 	ResultSet rs = null;
-	String redirectURL = "main.jsp";
-
+	try{
 	conn = ConnectDB.getConnection();
+	conn.setAutoCommit(false);
 	String ItemID = request.getParameter("ItemID");
 	String Inum = request.getParameter("Inum");
 	String Cusid = "temp";
@@ -30,40 +30,24 @@
 	rs.next();
 	CartID = rs.getString(1);
 
-	Statement stmt;
-	query1 = "SELECT * FROM putin P WHERE P.CartID = " + CartID +" AND P.ItemID = " + ItemID;
-	stmt = conn.createStatement();
-	rs = stmt.executeQuery(query1);
-	rs.last();
-	int cnt = rs.getRow();
-	rs.first();
-	conn.close();
-	if(cnt == 1)
-	{
-		redirectURL = "showitemdetail.jsp?ItemID=" + ItemID +"&error=already";
-		response.sendRedirect(redirectURL);
-	}else{
-		conn.close();
-		try{
-			conn = ConnectDB.getConnection();
-			conn.setAutoCommit(false);
-			query1 = "INSERT INTO putin VALUES ("+CartID+","+ItemID+","+Inum+")";
-			pstmt2 = conn.prepareStatement(query1);
-			pstmt2.executeUpdate();
-			conn.commit();
-		}  catch (ClassNotFoundException | SQLException sqle) {
-			conn.rollback();
-			throw new RuntimeException(sqle.getMessage());
-		} finally {
-			try {
-				if ( pstmt != null) { pstmt.close(); pstmt=null; }
-				if (conn != null) { conn.close(); conn=null; }
-			} catch(Exception e) {
-				throw new RuntimeException(e.getMessage());
-			}
+	query1 = "DELETE FROM putin WHERE CartID = "+ CartID +" AND ItemID = "+ ItemID;
+	pstmt2 = conn.prepareStatement(query1);
+	pstmt2.executeUpdate();
+	conn.commit();
+	}  catch (ClassNotFoundException | SQLException sqle) {
+		conn.rollback();
+		throw new RuntimeException(sqle.getMessage());
+	} finally {
+		try {
+			if ( pstmt != null) { pstmt.close(); pstmt=null; }
+			if (conn != null) { conn.close(); conn=null; }
+		} catch(Exception e) {
+			throw new RuntimeException(e.getMessage());
 		}
-		response.sendRedirect(redirectURL);
 	}
+
+	String redirectURL = "showcart.jsp";
+	response.sendRedirect(redirectURL);
 %>
 </body>
 </html>
