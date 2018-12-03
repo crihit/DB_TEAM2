@@ -34,4 +34,8 @@ Implement Registration.
 
 Change column type of Pnumber in customer to not unique key.
 
+### 2018.12.2
+
+Implement showitems page, showitemdetail page and search page.
+
 -----------------
