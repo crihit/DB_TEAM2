@@ -24,10 +24,10 @@
 				redirectURL = "register.jsp?error=null";
 				response.sendRedirect(redirectURL);
 		}
-		if(!ConnectDB.checkID(request.getParameter("id"))){
+		else if(!ConnectDB.checkID(request.getParameter("id"))){
 			redirectURL = "register.jsp?error=already";
 			response.sendRedirect(redirectURL);
-		}
+		} else {
 		pstmt.setString(1, request.getParameter("id"));
 		pstmt.setString(2, request.getParameter("pw"));
 		if(request.getParameter("sex")=="default") {
@@ -77,21 +77,24 @@
 		String nowCart = "INSERT INTO nowcart VALUES ("+cartNum+",\""+userName+"\")";
 		stmt.executeUpdate(nowCart);
 		conn.commit();
-		
+		redirectURL = "login.jsp";
+		response.sendRedirect(redirectURL);
+		}
 	} catch (ClassNotFoundException | SQLException sqle) {
 		conn.rollback();
-		
+		redirectURL = "register.jsp?error=unknown";
+		response.sendRedirect(redirectURL);
 		throw new RuntimeException(sqle.getMessage());
 	} finally {
 		try {
 			if ( stmt != null) { stmt.close(); stmt=null; }
 			if (conn != null) { conn.close(); conn=null; }
+			
 		} catch(Exception e) {
 			throw new RuntimeException(e.getMessage());
 		}
 	}
-	redirectURL = "login.jsp";
-	response.sendRedirect(redirectURL);
+	
 
 %>
 </body>

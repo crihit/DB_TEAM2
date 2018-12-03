@@ -5,6 +5,8 @@
 <html>
 <head>
 <meta charset="EUC-KR">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="css/bootstrap.min.css">
 <title>Team2 Market</title>
 </head>
 <body>
@@ -42,13 +44,17 @@
 		
 		<input type = "submit" value = "가입">
 	</form>
-<% if (request.getParameter("error") == null ) { %>
-	<h4></h4>
-<% } else if (request.getParameter("error") == "null"){ %>
-	<font color = "red">필수입력란을 모두 채워주세요.</font>
-<% } else if (request.getParameter("error") == "already"){ %>
-	<font color = "red">ID가 이미 존재합니다. 다른 아이디를 입력해 주세요.</font>
+<% if (request.getParameter("error") == null ) {} else{ %>
+	<div class="alert alert-danger" role="alert">
+<%  if (request.getParameter("error").equals("null")){ %>
+	<h4>필수입력란을 모두 채워주세요.</h4>
+<% } else if (request.getParameter("error").equals("already")){ %>
+	<h4>ID가 이미 존재합니다. 다른 아이디를 입력해 주세요.</h4>
+<% } else if (request.getParameter("error").equals("unknown")){ %>
+	<h4>알수없는 에러가 발생했습니다. 다시 시도해 주세요.</h4>
 <% }
+}
 %>
+</div>
 </body>
 </html>
