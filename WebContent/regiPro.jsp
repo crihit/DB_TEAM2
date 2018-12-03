@@ -20,7 +20,7 @@
 		pstmt = conn.prepareStatement("INSERT INTO customer VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)");
 		//check all 'not null' data inputed
 		//not null : Cusid, Cuspw, Pnumber, Cusname, Azip, Astate, Acity, Astreet, Abuildnum
-		if(request.getParameter("id")=="" || request.getParameter("pw")=="" || request.getParameter("Pnumber")=="" || request.getParameter("name")=="" || request.getParameter("zip")=="" || request.getParameter("state")=="" || request.getParameter("city")=="" || request.getParameter("street")=="" || request.getParameter("buildnum")=="") {
+		if(request.getParameter("id").equals("") || request.getParameter("pw").equals("") || request.getParameter("Pnumber").equals("") || request.getParameter("name").equals("") || request.getParameter("zip").equals("") || request.getParameter("state").equals("") || request.getParameter("city").equals("") || request.getParameter("street").equals("") || request.getParameter("buildnum").equals("")) {
 				redirectURL = "register.jsp?error=null";
 				response.sendRedirect(redirectURL);
 		}
@@ -30,24 +30,24 @@
 		} else {
 		pstmt.setString(1, request.getParameter("id"));
 		pstmt.setString(2, request.getParameter("pw"));
-		if(request.getParameter("sex")=="default") {
+		if(request.getParameter("sex").equals("default")) {
 			pstmt.setNull(3, Types.CHAR);
 		}
 		else{
-			if(request.getParameter("sex")=="MALE")
+			if(request.getParameter("sex").equals("MALE"))
 				pstmt.setString(3, "M");
 			else
 				pstmt.setString(3, "F");
 		}
 		pstmt.setString(4, request.getParameter("Pnumber"));
 		pstmt.setString(5, request.getParameter("name"));
-		if(request.getParameter("age")=="") {
+		if(request.getParameter("age").equals("")) {
 			pstmt.setNull(6, Types.INTEGER);
 		}
 		else{
 			pstmt.setInt(6, Integer.parseInt(request.getParameter("age")));
 		}
-		if(request.getParameter("job")=="") {
+		if(request.getParameter("job").equals("")) {
 			pstmt.setNull(7, Types.VARCHAR);
 		}
 		else{
@@ -58,7 +58,7 @@
 		pstmt.setString(10, request.getParameter("city"));
 		pstmt.setString(11, request.getParameter("street"));
 		pstmt.setInt(12, Integer.parseInt(request.getParameter("buildnum")));
-		if(request.getParameter("lastadd")=="") {
+		if(request.getParameter("lastadd").equals("")) {
 			pstmt.setNull(13, Types.VARCHAR);
 		}
 		else{
