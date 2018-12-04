@@ -38,4 +38,18 @@ Change column type of Pnumber in customer to not unique key.
 
 Implement showitems page, showitemdetail page and search page.
 
+### 2018.12.3
+
+Implement recommend feature.
+
+Make new cart when new customer registed.
+
+Implement logout.
+
+### 2018.12.4
+
+Implement user info and admin view.
+
+Implement adding and deleting item into cart.
+
 -----------------
