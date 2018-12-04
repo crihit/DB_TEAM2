@@ -11,7 +11,7 @@
 <title>Team2 Market</title>
 </head>
 <body>
-	<h1 class="display-3" onclick="location.href='login.jsp'">TEAM2 MARKET</h1><br/>
+	<h1 align = "center" class="display-3" onclick="location.href='login.jsp'">TEAM2 MARKET</h1><br/>
 <form action = "incomeView.jsp?case=1" method="post">
 <h3>전체 매출 조회</h3><br>
 	<button type="submit" class="btn btn-primary">보기</button><br>
@@ -42,6 +42,8 @@ Connection conn = ConnectDB.getConnection();
 Statement stmt = conn.createStatement();
 ResultSet rs = stmt.executeQuery(findShortage);
 %>
+<br><br>
+<h1 class="display-4">재고가 부족한 상품</h1><br/>
 <table class="table">
   <thead class="thead-dark" align="center">
     <tr>

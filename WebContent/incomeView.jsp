@@ -11,7 +11,7 @@
 <title>Team2 Market</title>
 </head>
 <body>
-	<h1 onclick="location.href='login.jsp'">TEAM2 MARKET</h1><br/>
+	<h1 align = "center" class="display-3" onclick="location.href='login.jsp'">TEAM2 MARKET</h1><br/>
 	<button type="button" onclick="location.href='salesInfo.jsp'" class="btn btn-danger">µÚ·Î</button>
 	
 <%

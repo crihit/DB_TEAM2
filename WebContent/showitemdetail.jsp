@@ -10,7 +10,7 @@
 	<title>Team2 Market</title>
 </head>
 <body>
-	<h1 onclick="location.href='main.jsp'" align="center">TEAM2 MARKET</h1>
+	<h1 align = "center" class="display-3" onclick="location.href='login.jsp'">TEAM2 MARKET</h1><br/>
 <%
 	Connection conn = ConnectDB.getConnection();
 	PreparedStatement pstmt;

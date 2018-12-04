@@ -54,4 +54,8 @@ Implement adding and deleting item into cart.
 
 Add index.
 
+Implement order feature.
+
+Implement cart, order view.
+
 -----------------
