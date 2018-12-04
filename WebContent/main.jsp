@@ -31,6 +31,7 @@
 		{
 			%>	
 				<button type="button" onclick="location.href='userInfo.jsp'" class="btn btn-secondary">회원정보</button>
+				<button type="button" class="btn btn-warning" onclick="location.href='showorderlist.jsp'">주문기록</button>
 				</div>
 			<%
 			Connection conn = ConnectDB.getConnection();
