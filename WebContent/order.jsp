@@ -64,48 +64,46 @@
 				}
 
 			}while (rs.next());
-		}
-		out.println("</tbody></table>");
-		out.println("</div>");
+
+			if(cnt == count){
+				rs.first();
+				do{
+					int ItemID = rs.getInt(1);
+					String Iname = rs.getString(2);
+					int Iprice = rs.getInt(3);
+					int Icount = rs.getInt(4);
+					count++;
 		
-		if(cnt == count){
-			rs.first();
-			do{
-				int ItemID = rs.getInt(1);
-				String Iname = rs.getString(2);
-				int Iprice = rs.getInt(3);
-				int Icount = rs.getInt(4);
-				count++;
-	
-				query2 = "SELECT S.Icount FROM stores S WHERE S.RID = " + RID + " AND S.ItemID = " + ItemID;
-				Statement stmt2 = conn.createStatement();
-				rs2 = stmt2.executeQuery(query2);
-				rs2.next();
-				int sIcount = rs2.getInt(1);
-				int orderedIcount = sIcount - Icount;
-				query2 = "UPDATE stores SET Icount = " + orderedIcount + " WHERE RID = " + RID + " AND ItemID = " + ItemID;
-				stmt2.executeUpdate(query2);
-			}while(rs.next());
-			query2 = "SELECT CartID FROM nowcart WHERE Cusid = \'" + Cusid + "\'";
-			rs = stmt.executeQuery(query2);
-			rs.next();
-			int CartID = rs.getInt(1);
-			
-			Date today = new Date();
-			SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
-			String orderdate = date.format(today);
-			
-			query2 = "INSERT INTO orders VALUES("+CartID+", "+RID+", \'" + orderdate + "\')";
-			stmt.executeUpdate(query2);
-			int cartNum = ConnectDB.checkCartNum();
-			String makeCart = "INSERT INTO cart VALUES ("+cartNum+",\""+Cusid+"\")";
-			stmt.executeUpdate(makeCart);
-			String nowCart = "UPDATE nowcart SET CartID ="+cartNum+" WHERE Cusid =\'" + Cusid + "\'";
-			stmt.executeUpdate(nowCart);
-		}
+					query2 = "SELECT S.Icount FROM stores S WHERE S.RID = " + RID + " AND S.ItemID = " + ItemID;
+					Statement stmt2 = conn.createStatement();
+					rs2 = stmt2.executeQuery(query2);
+					rs2.next();
+					int sIcount = rs2.getInt(1);
+					int orderedIcount = sIcount - Icount;
+					query2 = "UPDATE stores SET Icount = " + orderedIcount + " WHERE RID = " + RID + " AND ItemID = " + ItemID;
+					stmt2.executeUpdate(query2);
+				}while(rs.next());
+				query2 = "SELECT CartID FROM nowcart WHERE Cusid = \'" + Cusid + "\'";
+				rs = stmt.executeQuery(query2);
+				rs.next();
+				int CartID = rs.getInt(1);
+				
+				Date today = new Date();
+				SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
+				String orderdate = date.format(today);
+				
+				query2 = "INSERT INTO orders VALUES("+CartID+", "+RID+", \'" + orderdate + "\')";
+				stmt.executeUpdate(query2);
+				int cartNum = ConnectDB.checkCartNum();
+				String makeCart = "INSERT INTO cart VALUES ("+cartNum+",\""+Cusid+"\")";
+				stmt.executeUpdate(makeCart);
+				String nowCart = "UPDATE nowcart SET CartID ="+cartNum+" WHERE Cusid =\'" + Cusid + "\'";
+				stmt.executeUpdate(nowCart);
+				redirectURL = "main.jsp";
+				response.sendRedirect(redirectURL);
+			}
+		}		
 		conn.close();
-		redirectURL = "main.jsp";
-		response.sendRedirect(redirectURL);
 	}
 %>	
 </body>
