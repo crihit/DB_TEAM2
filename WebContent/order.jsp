@@ -13,6 +13,7 @@
 	<h1 onclick="location.href='main.jsp'" align="center">TEAM2 MARKET</h1>
 <%
 	String Cusid = (String)session.getAttribute("Cusid");
+	String redirectURL = "";
 	if(Cusid == null || Cusid.equals(""))
 		response.sendRedirect("login.jsp");
 	else if(Cusid.equals("admin")){
@@ -25,7 +26,7 @@
 		int count = 0;
 		String query1 = "SELECT C.Astate, R.RID FROM customer C, retailer R WHERE C.Cusid = \'" + Cusid + "\' AND C.Astate = R.Astate";
 		String query2 = "";
-		String redirectURL = "showcart.jsp";
+		redirectURL = "showcart.jsp";
 		stmt = conn.createStatement();
 		rs = stmt.executeQuery(query1);
 		rs.next();
@@ -41,7 +42,7 @@
 		rs.first();
 		if (cnt == 0) {
 			redirectURL = "showcart.jsp?error=empty";
-			response.sendRedirect(redirectURL);
+			//response.sendRedirect(redirectURL);
 		} else {
 			System.out.println("in");
 			do {
@@ -49,7 +50,6 @@
 				String Iname = rs.getString(2);
 				int Iprice = rs.getInt(3);
 				int Icount = rs.getInt(4);
-				count++;
 
 				query2 = "SELECT S.Icount FROM stores S WHERE S.RID = " + RID + " AND S.ItemID = " + ItemID;
 				Statement pstmt2 = conn.createStatement();
@@ -58,10 +58,11 @@
 				int sIcount = rs2.getInt(1);
 				System.out.println("sIcount" + sIcount + "Icount" + Icount);
 				if ((sIcount - Icount) < 0) {
-					redirectURL = "showcart.jsp?error=" + count;
-					response.sendRedirect(redirectURL);
+					redirectURL = "showcart.jsp?error=" + (count+1);
+					//response.sendRedirect(redirectURL);
 					break;
 				}
+				count++;
 
 			}while (rs.next());
 
@@ -100,11 +101,12 @@
 				String nowCart = "UPDATE nowcart SET CartID ="+cartNum+" WHERE Cusid =\'" + Cusid + "\'";
 				stmt.executeUpdate(nowCart);
 				redirectURL = "main.jsp";
-				response.sendRedirect(redirectURL);
+				//response.sendRedirect(redirectURL);
 			}
 		}		
 		conn.close();
 	}
+	response.sendRedirect(redirectURL);
 %>	
 </body>
 </html>
