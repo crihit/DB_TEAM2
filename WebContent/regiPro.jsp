@@ -20,7 +20,7 @@
 		pstmt = conn.prepareStatement("INSERT INTO customer VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)");
 		//check all 'not null' data inputed
 		//not null : Cusid, Cuspw, Pnumber, Cusname, Azip, Astate, Acity, Astreet, Abuildnum
-		if(request.getParameter("id").equals("") || request.getParameter("pw").equals("") || request.getParameter("Pnumber").equals("") || request.getParameter("name").equals("") || request.getParameter("zip").equals("") || request.getParameter("state").equals("") || request.getParameter("city").equals("") || request.getParameter("street").equals("") || request.getParameter("buildnum").equals("")) {
+		if(request.getParameter("id").equals("") || request.getParameter("pw").equals("") || request.getParameter("Pnumber").equals("") || request.getParameter("name").equals("") || request.getParameter("state").equals("") || request.getParameter("city").equals("") || request.getParameter("street").equals("") || request.getParameter("buildnum").equals("")) {
 				redirectURL = "register.jsp?error=null";
 				response.sendRedirect(redirectURL);
 		}
@@ -53,8 +53,72 @@
 		else{
 			pstmt.setString(7, request.getParameter("job"));
 		}
-		pstmt.setInt(8, Integer.parseInt(request.getParameter("zip")));
-		pstmt.setString(9, request.getParameter("state"));
+		/* pstmt.setInt(8, Integer.parseInt(request.getParameter("zip")));
+		pstmt.setString(9, request.getParameter("state")); */
+		int zipNum = Integer.parseInt(request.getParameter("state"));
+		switch(zipNum){
+		case 12345:
+			pstmt.setInt(8, zipNum);
+			pstmt.setString(9, "Ulsan");
+			break;
+		case 12333:
+			pstmt.setInt(8, zipNum);
+			pstmt.setString(9, "Daegu");
+			break;
+		case 12444:
+			pstmt.setInt(8, zipNum);
+			pstmt.setString(9, "Busan");
+			break;
+		case 12555:
+			pstmt.setInt(8, zipNum);
+			pstmt.setString(9, "Gwangju");
+			break;
+		case 12666:
+			pstmt.setInt(8, zipNum);
+			pstmt.setString(9, "Daejeon");
+			break;
+		case 12777:
+			pstmt.setInt(8, zipNum);
+			pstmt.setString(9, "Incheon");
+			break;
+		case 12888:
+			pstmt.setInt(8, zipNum);
+			pstmt.setString(9, "Seoul");
+			break;
+		case 12999:
+			pstmt.setInt(8, zipNum);
+			pstmt.setString(9, "Gyeonggi");
+			break;
+		case 13111:
+			pstmt.setInt(8, zipNum);
+			pstmt.setString(9, "Gangwon");
+			break;
+		case 13222:
+			pstmt.setInt(8, zipNum);
+			pstmt.setString(9, "Chungbuk");
+			break;
+		case 13333:
+			pstmt.setInt(8, zipNum);
+			pstmt.setString(9, "Chungnam");
+			break;
+		case 13444:
+			pstmt.setInt(8, zipNum);
+			pstmt.setString(9, "Jeonbuk");
+			break;
+		case 13555:
+			pstmt.setInt(8, zipNum);
+			pstmt.setString(9, "Jeonnam");
+			break;
+		case 13666:
+			pstmt.setInt(8, zipNum);
+			pstmt.setString(9, "Gyeongbuk");
+			break;
+		case 13777:
+			pstmt.setInt(8, zipNum);
+			pstmt.setString(9, "Gyeongnam");
+			break;
+			default:
+		}
 		pstmt.setString(10, request.getParameter("city"));
 		pstmt.setString(11, request.getParameter("street"));
 		pstmt.setInt(12, Integer.parseInt(request.getParameter("buildnum")));

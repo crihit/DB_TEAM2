@@ -10,7 +10,7 @@
 	<title>Team2 Market</title>
 </head>
 <body>
-	<h1 onclick="location.href='main.jsp'" align="center">TEAM2 MARKET</h1><br/>
+	<h1 align = "center" class="display-3" onclick="location.href='login.jsp'">TEAM2 MARKET</h1><br/>
 	<div align="right">
 	<button type="button" class="btn btn-danger" onclick="location.href='logout.jsp'">Logout</button>
 	<button type="button" class="btn btn-info" onclick="location.href='showcart.jsp'">Cart</button>
