@@ -909,6 +909,7 @@ INSERT INTO stores VALUES (43, 15, 100);
 INSERT INTO stores VALUES (44, 15, 100);
 INSERT INTO stores VALUES (45, 15, 100);
 
+INSERT INTO cart VALUES (0, 'admin');
 INSERT INTO cart VALUES (1, '1ga');
 INSERT INTO cart VALUES (2, '1ga');
 INSERT INTO cart VALUES (3, '1ga');
@@ -1439,6 +1440,7 @@ INSERT INTO putin VALUES (168,43,1);
 INSERT INTO putin VALUES (169,44,2);
 INSERT INTO putin VALUES (170,45,1);
 
+INSERT INTO nowcart VALUES (0, 'admin');
 INSERT INTO nowcart VALUES (151, '1ga');
 INSERT INTO nowcart VALUES (152, '1na');
 INSERT INTO nowcart VALUES (153, '1da');
