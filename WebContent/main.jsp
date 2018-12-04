@@ -13,7 +13,6 @@
 	<h1 align = "center" class="display-3" onclick="location.href='login.jsp'">TEAM2 MARKET</h1><br/>
 	<div align="right">
 	<button type="button" class="btn btn-danger" onclick="location.href='logout.jsp'">Logout</button>
-	<button type="button" class="btn btn-info" onclick="location.href='showcart.jsp'">Cart</button>
 	<%  //String Cusid = request.getParameter("Cusid");
 		String Cusid = "temp";
 		Cusid = (String)session.getAttribute("Cusid");
@@ -23,6 +22,7 @@
 		else if(Cusid.equals("admin"))
 		{
 	%>	
+		<button type="button" class="btn btn-info" onclick="location.href='showAdminCart.jsp'">Cart</button>
 		<button type="button" onclick="location.href='salesInfo.jsp'" class="btn btn-secondary">관리자메뉴</button>
 		</div>
 	<%	
@@ -30,6 +30,7 @@
 		else
 		{
 			%>	
+				<button type="button" class="btn btn-info" onclick="location.href='showcart.jsp'">Cart</button>
 				<button type="button" onclick="location.href='userInfo.jsp'" class="btn btn-secondary">회원정보</button>
 				<button type="button" class="btn btn-warning" onclick="location.href='showorderlist.jsp'">주문기록</button>
 				</div>
