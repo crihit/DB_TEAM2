@@ -52,4 +52,6 @@ Implement user info and admin view.
 
 Implement adding and deleting item into cart.
 
+Add index.
+
 -----------------
