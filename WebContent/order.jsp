@@ -32,7 +32,6 @@
 	query1 = "SELECT I.ItemID, I.Iname, I.Iprice, P.Icount FROM item I, putin P, nowcart T WHERE T.Cusid = \'" + Cusid + "\' AND P.CartID = T.CartID AND I.ItemID = P.ItemID";
 	pstmt = conn.prepareStatement(query1);
 	rs = pstmt.executeQuery();
-	System.out.println(rs);
 	
 	rs.last();
 	int cnt = rs.getRow();

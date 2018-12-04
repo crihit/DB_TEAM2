@@ -37,44 +37,55 @@
 			Connection conn = ConnectDB.getConnection();
 			PreparedStatement pstmt;
 			ResultSet rs;
-			String query1 = "SELECT Cusname, Astate FROM customer WHERE Cusid = \'" + Cusid + "\'";
-			pstmt = conn.prepareStatement(query1);
-			rs = pstmt.executeQuery();
-			String cusname = "";
-			String state = "";
 			
-			if(rs.next())
-			{
-			cusname = rs.getString(1);
-			state = rs.getString(2);
-
-			out.println("<h3>Welcome " + cusname + "</h3><br/>");
-			out.println("<h5>같은지역의 고객님들이 많이 주문하신 상품입니다.</h5>");
-			}
-			query1 = "SELECT I.ItemID, I.Iname, I.Iprice\n" +
-					"FROM customer C, cart T, orders O, item I, putin P\n" +
-					"WHERE C.Cusid = T.Cusid\n" +
-					"AND T.CartID = O.CartID\n" +
-					"AND T.CartID = P.CartID\n" +
-					"AND P.ItemID = I.ItemID\n" +
-					"AND C.Astate = \'" + state + "\'\n" +
-					"GROUP BY I.ItemID\n" +
-					"ORDER BY COUNT(I.ItemID) DESC\n" +
-					"LIMIT 3\n";
+			String query1 = "SELECT O.CartID, O.Odate FROM orders O, cart T WHERE T.Cusid = \'" + Cusid + "\' AND T.CartID = O.CartID ORDER BY O.Odate DESC";
 			pstmt = conn.prepareStatement(query1);
 			rs = pstmt.executeQuery();
-			out.println("<div align=\"center\">");
-			out.println("<table class=\"table table-hover table-bordered\" align=\"center\" border=\"1\">");
-			out.println("<thead><th align=\"center\">Name</th>");
-			out.println("<th align=\"center\">Price</th></thead><tbody>");
-			while(rs.next()){
-				out.println("<tr align=\"center\" onclick=\"location.href=\'showitemdetail.jsp?ItemID=" + rs.getString(1) +"\'\">");
-				out.println("<td>"+rs.getString(2)+"</td>");
-				out.println("<td>"+rs.getString(3)+"</td>");
-				out.println("</tr>");
+			
+			rs.last();
+			int cnt = rs.getRow();
+			rs.first();
+			
+			if(cnt == 0){
+				query1 = "SELECT Cusname, Astate FROM customer WHERE Cusid = \'" + Cusid + "\'";
+				pstmt = conn.prepareStatement(query1);
+				rs = pstmt.executeQuery();
+				String cusname = "";
+				String state = "";
+				
+				if(rs.next())
+				{
+				cusname = rs.getString(1);
+				state = rs.getString(2);
+	
+				out.println("<h3>Welcome " + cusname + "</h3><br/>");
+				out.println("<h5>같은지역의 고객님들이 많이 주문하신 상품입니다.</h5>");
+				}
+				query1 = "SELECT I.ItemID, I.Iname, I.Iprice\n" +
+						"FROM customer C, cart T, orders O, item I, putin P\n" +
+						"WHERE C.Cusid = T.Cusid\n" +
+						"AND T.CartID = O.CartID\n" +
+						"AND T.CartID = P.CartID\n" +
+						"AND P.ItemID = I.ItemID\n" +
+						"AND C.Astate = \'" + state + "\'\n" +
+						"GROUP BY I.ItemID\n" +
+						"ORDER BY COUNT(I.ItemID) DESC\n" +
+						"LIMIT 3\n";
+				pstmt = conn.prepareStatement(query1);
+				rs = pstmt.executeQuery();
+				out.println("<div align=\"center\">");
+				out.println("<table class=\"table table-hover table-bordered\" align=\"center\" border=\"1\">");
+				out.println("<thead><th align=\"center\">Name</th>");
+				out.println("<th align=\"center\">Price</th></thead><tbody>");
+				while(rs.next()){
+					out.println("<tr align=\"center\" onclick=\"location.href=\'showitemdetail.jsp?ItemID=" + rs.getString(1) +"\'\">");
+					out.println("<td>"+rs.getString(2)+"</td>");
+					out.println("<td>"+rs.getString(3)+"</td>");
+					out.println("</tr>");
+				}
+				out.println("</tbody></table>");
+				out.println("</div>");
 			}
-			out.println("</tbody></table>");
-			out.println("</div>");
 			pstmt.close();
 			conn.close();
 		}
