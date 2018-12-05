@@ -41,56 +41,56 @@
 
 %>
 <br><br>
-<h1 class="display-4">재고가 부족한 상품 - <% 
-switch(request.getParameter(“state")){
-case "Seoul":
-out.println("서울");
-break;
-case "Busan":
-out.println("부산");
-break;
-case "Ulsan":
-out.println("울산");
-break;
-case "Daegu":
-out.println("대구");
-break;
-case "Gwangju":
-out.println("광주");
-break;
-case "Daejeon":
-out.println("대전");
-break;
-case "Incheon":
-out.println("인천");
-break;
-case "Gyeonggi":
-out.println("경기");
-break;
-case "Gangwon":
-out.println("강원");
-break;
-case "Chungbuk":
-out.println("충북");
-break;
-case "Chungnam":
-out.println("충남");
-break;
-case "Jeonbuk":
-out.println("전북");
-break;
-case "Jeonnam":
-out.println("전남");
-break;
-case "Gyeongbuk":
-out.println("경북");
-break;
-case "Gyeongnam":
-out.println("경남");
-break;
-default:
-out.println("error");
-}
+<h1 class="display-4">재고가 부족한 상품 - <%
+	switch (request.getParameter("state")) {
+	case "Seoul":
+		out.println("서울");
+		break;
+	case "Busan":
+		out.println("부산");
+		break;
+	case "Ulsan":
+		out.println("울산");
+		break;
+	case "Daegu":
+		out.println("대구");
+		break;
+	case "Gwangju":
+		out.println("광주");
+		break;
+	case "Daejeon":
+		out.println("대전");
+		break;
+	case "Incheon":
+		out.println("인천");
+		break;
+	case "Gyeonggi":
+		out.println("경기");
+		break;
+	case "Gangwon":
+		out.println("강원");
+		break;
+	case "Chungbuk":
+		out.println("충북");
+		break;
+	case "Chungnam":
+		out.println("충남");
+		break;
+	case "Jeonbuk":
+		out.println("전북");
+		break;
+	case "Jeonnam":
+		out.println("전남");
+		break;
+	case "Gyeongbuk":
+		out.println("경북");
+		break;
+	case "Gyeongnam":
+		out.println("경남");
+		break;
+	default:
+		out.println("error");
+	}
 %></h1><br/>
 <table class="table">
   <thead class="thead-dark" align="center">

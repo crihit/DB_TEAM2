@@ -58,4 +58,6 @@ Implement order feature.
 
 Implement cart, order view.
 
+Remake Recommend feature.
+
 -----------------
